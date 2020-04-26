@@ -18,9 +18,8 @@ RUN wget -O terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_V
   unzip terraform.zip -d /usr/local/bin && \
   rm -f terraform.zip
 RUN mkdir -p /home/node/project
-RUN sudo chmod -R 777 /home/node
+RUN chmod -R 777 /home/node
 USER node
-WORKDIR /home/node/project
 
 ENTRYPOINT ["/bin/bash", "-c"]
 
