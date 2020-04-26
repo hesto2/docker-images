@@ -17,10 +17,10 @@ ENV TERRAFORM_VERSION 0.12.24
 RUN wget -O terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip && \
   unzip terraform.zip -d /usr/local/bin && \
   rm -f terraform.zip
+RUN mkdir -p /home/node/project
+RUN chmod -R 755 /home/node/project
 USER node
-RUN mkdir -p /home/node/app
-WORKDIR /home/node/app
-COPY --chown=node:node . .
+WORKDIR /home/node/project
 
 ENTRYPOINT ["/bin/bash", "-c"]
 
