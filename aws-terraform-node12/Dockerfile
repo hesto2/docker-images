@@ -18,5 +18,10 @@ RUN wget -O terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_V
   unzip terraform.zip -d /usr/local/bin && \
   rm -f terraform.zip
 
+RUN mkdir -p /home/node/app && chown -R node:node /home/node/app
+WORKDIR /home/node/app
+USER node
+COPY --chown=node:node . .
+
 ENTRYPOINT ["/bin/bash", "-c"]
 
