@@ -1,15 +1,15 @@
-FROM node:14-alpine
+FROM node:20-alpine
 
-RUN apk add --no-cache \
-py-pip \
-py-setuptools \
+RUN apk add --no-cache --virtual .build-deps \
+python3 \
+py3-pip \
 ca-certificates \
 openssl \
 bash \
 curl \
 git \
 zip && \
-pip install --no-cache-dir --upgrade pip awscli
+pip3 install --no-cache-dir --break-system-packages awscli
 
 ENV TERRAFORM_VERSION 1.7.3
 
